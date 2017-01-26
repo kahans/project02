@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -59,16 +60,16 @@ body {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="../view/mainHome.html">team4 도서관</a>
+				<a class="brand" href="<c:url value='/mainhome'/>">team4 도서관</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						<!-- 로그인과 로그아웃을 if문으로 설정하기 -->
 						<a href="../view/loginform.html" class="navbar-link">로그인</a>
 					</p>
 					<ul class="nav">
-						<li class="active"><a href="../view/bookRegister.html">도서관리</a></li>
-						<li><a href="../view/memberJoin.html">회원관리</a></li>
-						<li><a href="../view/bookRent.html">대여관리</a></li>
+						<li class="active"><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
+						<li><a href="<c:url value='/memberAdd'/>">회원관리</a></li>
+						<li><a href="<c:url value='/rentbook'/>">대여관리</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -82,8 +83,8 @@ body {
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">도서관리</li>
-						<li><a href="../view/bookRegister.html">도서등록</a></li>
-						<li class="active"><a href="../view/bookDisposal.html">도서폐기등록</a></li>
+						<li><a href="<c:url value='/bookAdd'/>">도서등록</a></li>
+						<li class="active"><a href="<c:url value='/bookDis'/>">도서폐기등록</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -96,9 +97,9 @@ body {
 				<div class="row-fluid">
 					<div class="span4">
 						<!-- 도서폐기 폼 -->
-						<form action="" method="post">
+						<form action="<c:url value='/bookDis'/>" method="post">
 							<div>
-								도서코드 : <input type="text" name="">
+								도서코드 : <input type="text" name="bookCode">
 							</div>
 						<p>
 							<input type="submit" class="btn btn-primary btn-large" value="도서폐기" />

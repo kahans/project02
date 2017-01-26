@@ -25,4 +25,10 @@ public class LibraryServiceImpl implements LibraryService{
 		return libraryDao.loginSign(library);
 	}
 
+	@Override
+	public int memberAdd(Member member) {
+		logger.info(member.toString());
+		return libraryDao.memberAdd(member);
+	}
+
 }

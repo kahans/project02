@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -66,9 +67,9 @@ body {
 						<a href="../view/loginform.html" class="navbar-link">로그인</a>
 					</p>
 					<ul class="nav">
-						<li><a href="../view/bookRegister.html">도서관리</a></li>
-						<li><a href="../view/memberJoin.html">회원관리</a></li>
-						<li class="active"><a href="../view/bookRent.html">대여관리</a></li>
+						<li><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
+						<li><a href="<c:url value='/memberadd'/>">회원관리</a></li>
+						<li class="active"><a href="<c:url value='/rentBook'/>">대여관리</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -82,8 +83,8 @@ body {
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">대여관리</li>
-						<li class="active"><a href="../view/bookRent.html">도서대여</a></li>
-						<li><a href="../view/bookReturn.html">도서반납</a></li>
+						<li class="active"><a href="<c:url value='/rentbook'/>">도서대여</a></li>
+						<li><a href="<c:url value='/returnbook'/>">도서반납</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -96,7 +97,7 @@ body {
 				<div class="row-fluid">
 					<div class="span4">
 						<!-- 대여 폼 -->
-						<form action="#" method="post">
+						<form action="<c:url value='/rentbook'/>" method="post">
 							<div>
 								도서코드: <input type="text" name="bookCode" />
 							</div>
@@ -104,19 +105,20 @@ body {
 								회원코드: <input type="text" name="memberId" />
 							</div>
 							<div>
-								대여일: <input type="date" name="startDate" />
+								대여일: <input type="date" name="rDStrat"/>
 							</div>
 							<div>
-								종료일: <input type="date" name="endDate" />
+								종료일: <input type="date" name="rDEnd" />
 							</div>
 							<div>
 								결제금액: <input type="text" name="rentalPay" />
 							</div>
 							<!-- <input type="submit" value="대여" />
 							<input type="reset"	value="초기화" /> -->
+							<input type="submit" class="btn btn-primary btn-large" value="대여" />
+							<input type="reset" class="btn btn-primary btn-large" value="리셋" />
 						</form>
-						<input type="submit" class="btn btn-primary btn-large" value="대여" />
-						<input type="reset" class="btn btn-primary btn-large" value="리셋" />
+						
 					</div>
 					<!--/span-->
 

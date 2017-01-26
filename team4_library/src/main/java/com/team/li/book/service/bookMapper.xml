@@ -13,14 +13,65 @@
 			book_author,
 			book_publisher
 		) values(
-			#{id001},
+			'id001',
 			#{stateNo},
-			#{1},
+			'1',
 			#{genreNo},
 			#{bookName},
 			#{bookAuthor},
 			#{bookPublisher}
-		);
-
+		)
 	</insert>
+	<insert id="bookDis" parameterType="com.team.li.book.service.Disposal">
+	INSERT INTO disposal(
+		book_code,
+		genre_no,
+		disposal_bookname,
+		disposal_author,
+		disposal_publisher,
+		disposal_registerday
+	)SELECT
+		book_code,
+		genre_no,
+		book_name,
+		book_author,
+		book_publisher,
+		now()
+	FROM book
+	where book_code=#{bookCode}
+	</insert>
+	<insert id="rentbook" parameterType="com.team.li.book.service.Rental">
+	insert into rental(
+		book_code,
+		member_id,
+		rentalstate_no,
+		rental_start,
+		rental_end,
+		rental_payment
+	) values (
+		#{bookCode},
+		#{memberId},
+		'1',
+		now(),
+		#{rDEnd},
+		#{rentalPay}
+	) 
+	</insert>
+	<select id="bookReturn" parameterType="int" resultType="com.team.li.book.service.Rental">
+	select
+		rental.rental_code as rentalCode,
+		book.book_name as bookName, 
+		member.member_name as mName,
+		rentalstate.rentalstate_name as rentalState,
+		rental.rental_start as rDStrat,
+		rental.rental_end as rDEnd,
+		rental.rental_payment as rentalPay
+	from rental
+	JOIN book on
+		rental.book_code = book.book_code
+	INNER JOIN member on
+		rental.member_id = member.member_id
+	WHERE book.book_code=#{bookCode}
+	
+	</select>
 </mapper>

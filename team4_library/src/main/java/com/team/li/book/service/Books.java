@@ -1,7 +1,7 @@
 package com.team.li.book.service;
 
 public class Books {
-	private String bookCode;
+	private int bookCode;
 	private String libraryId;
 	private int stateNo;
 	private int rentalstateNo;
@@ -12,10 +12,10 @@ public class Books {
 	private String bookFirstday;
 	private int bookTotalDay;
 	private int bookTotalCount;
-	public String getBookCode() {
+	public int getBookCode() {
 		return bookCode;
 	}
-	public void setBookCode(String bookCode) {
+	public void setBookCode(int bookCode) {
 		this.bookCode = bookCode;
 	}
 	public String getLibraryId() {

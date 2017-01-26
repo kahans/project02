@@ -5,6 +5,7 @@ public interface LibraryService {
 	public int LibraryAdd(Library library);
 	//도서관 관리자 로그인
 	public String LibraryLogin(Library library);
-	
+	//맴버 가입
+	public int memberAdd(Member member);
 	
 }

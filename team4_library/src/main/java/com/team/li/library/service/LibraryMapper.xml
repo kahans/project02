@@ -23,4 +23,16 @@
 		library_pw=#{libraryPw}
 	
 	</select>
+	<insert id="memberAdd" parameterType="com.team.li.library.service.Member">
+	insert into member(
+		member_name,
+		member_phone,
+		memberlevel_no
+	) values(
+		#{memberName},
+		#{memberPh},
+		#{mLevelNo}
+	)
+	
+	</insert>
 </mapper>

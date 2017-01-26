@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.li.library.service.Library;
+import com.team.li.library.service.Member;
 
 @Repository
 public class LibraryDaoImpl implements LibraryDao{
@@ -27,6 +28,12 @@ public class LibraryDaoImpl implements LibraryDao{
 	public String loginSign(Library library) {
 		logger.info(library.toString());
 		return sqlSession.selectOne("library.librarylogin", library);
+	}
+
+	@Override
+	public int memberAdd(Member member) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(Library_NS+"memberAdd", member);
 	}
 
 }
