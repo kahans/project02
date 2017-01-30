@@ -64,7 +64,7 @@ body {
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						<!-- 로그인과 로그아웃을 if문으로 설정하기 -->
-						<a href="../view/loginform.html" class="navbar-link">로그인</a>
+						
 					</p>
 					<ul class="nav">
 						<li class="active"><a href="<c:url value='/bookAdd'/>">도서관리</a></li>

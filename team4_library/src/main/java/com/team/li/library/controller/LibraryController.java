@@ -1,6 +1,7 @@
 package com.team.li.library.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,14 +46,21 @@ public class LibraryController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginSign(Library library, HttpSession session) {
-
-		logger.info(library.toString());
-		// session.setAttribute("LibraryLogin",library);
-		libraryService.LibraryLogin(library);
-
-		logger.debug("login : ");
-		return "redirect:/mainhome";
+	public String loginSign(Library library, HttpSession session ) {
+		Library r = libraryService.LibraryLogin(library);
+		if(r != null){
+			session.setAttribute("LibraryLogin",r.getLibraryId());
+			logger.debug("login : ");
+			return "redirect:/mainhome";
+		}else{
+			return "redirect:/login";
+		}
+	}
+	//로그아웃
+	@RequestMapping(value ="/logout")
+	public String libraryLogout(HttpSession session){
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 	// 회원 등록

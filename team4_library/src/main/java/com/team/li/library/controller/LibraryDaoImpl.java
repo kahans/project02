@@ -25,7 +25,7 @@ public class LibraryDaoImpl implements LibraryDao{
 	}
 
 	@Override
-	public String loginSign(Library library) {
+	public Library loginSign(Library library) {
 		logger.info(library.toString());
 		return sqlSession.selectOne("library.librarylogin", library);
 	}

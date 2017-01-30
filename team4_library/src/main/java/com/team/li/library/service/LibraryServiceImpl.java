@@ -20,7 +20,7 @@ public class LibraryServiceImpl implements LibraryService{
 	}
 
 	@Override
-	public String LibraryLogin(Library library) {
+	public Library LibraryLogin(Library library) {
 		logger.info(library.toString());
 		return libraryDao.loginSign(library);
 	}

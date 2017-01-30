@@ -64,13 +64,8 @@ body {
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						<!-- 로그인과 로그아웃을 설정하기 -->
-						<script>
-							session.setAttribute("id", request.getParameter("id"));
-							session.setAttribute("pw", request.getParameter("pw"));
-							console.log("id");
-						</script>
-						<a href="<c:url value='/login'/>" class="navbar-link">로그인</a>
-						<a href="">로그아웃</a>
+						
+						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">
 						<li><a href="<c:url value='/bookAdd'/>">도서관리</a></li>

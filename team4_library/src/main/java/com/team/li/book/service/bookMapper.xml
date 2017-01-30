@@ -62,7 +62,6 @@
 		rental.rental_code as rentalCode,
 		book.book_name as bookName, 
 		member.member_name as mName,
-		rentalstate.rentalstate_name as rentalState,
 		rental.rental_start as rDStrat,
 		rental.rental_end as rDEnd,
 		rental.rental_payment as rentalPay
