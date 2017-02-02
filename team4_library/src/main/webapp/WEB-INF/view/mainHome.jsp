@@ -55,16 +55,16 @@ body {
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
 				<a class="brand" href="<c:url value='/mainhome'/>">team4 도서관</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						<!-- 로그인과 로그아웃을 설정하기 -->
-						
+						<a href="#" class="navbar-link">${loginCheck.libraryId}</a>관리자님
 						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">

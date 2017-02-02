@@ -67,9 +67,9 @@ body {
 						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">
-						<li><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
+						<li class="active"><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
 						<li><a href="<c:url value='/memberadd'/>">회원관리</a></li>
-						<li class="active"><a href="<c:url value='/rentbook'/>">대여관리</a></li>
+						<li><a href="<c:url value='/rentbook'/>">대여관리</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -82,10 +82,10 @@ body {
 			<div class="span3">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
-						<li class="nav-header">대여관리</li>
-						<!-- 마우스오버를 사용하여 액션 넣기 -->
-						<li><a href="<c:url value='/rentbook'/>">도서대여</a></li>
-						<li class="active"><a href="<c:url value='/bookReturnCheck'/>">도서반납</a></li>
+						<li class="nav-header">도서관리</li>
+						<li><a href="<c:url value='/bookAdd'/>">도서등록</a></li>
+						<li class="active"><a href="<c:url value='/bookList'/>">도서목록</a>
+						<li><a href="<c:url value='/bookDis'/>">도서폐기등록</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -93,35 +93,55 @@ body {
 			<!--/span-->
 			<div class="span8">
 				<div class="hero-unit">
-					<h1 align="center">반납</h1>
+					<h1 align="center">도서목록</h1>
 				</div>
 				<div class="row-fluid">
 					<div class="span4">
-						<form action="#" method="post">
-							<div>
-								도서코드 : <input type="text" name="bookCode" value="${book.bookCode}"/>
-							</div>
-							<div>
-								도서명: <input type="text" name="bookName" value="${book.bookName}" />
-							</div>
-							<div>
-								회원이름: <input type="text" name="memberName" value="${book.mName}"/>
-							</div>
-							<div>
-								총요금: <input type="text" name="totalPrice" value="${book.rentalPay}" />
-							</div>
-							<div>
-								받은금액: <input type="text" name="paid" value="${book.rentalPay}"/>
-							</div>
+						<!-- 도서등록 폼 -->
+						<table border="1">
+							<thead>
+								<tr>
+									<th>도서코드</th>
+									<th>도서이름</th>
+									<th>도서저자</th>
+									<th>출판사</th>
+									<th>장르</th>
+									<th>상태</th>
+									<th>대여상황</th>
+									<th>최신 대여일</th>
+									<th>총대여일수</th>
+									<th>총대여횟수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="b" items="${list}">
+									<tr>
+										<td>${b.bookCode}</td>
+										<td>${b.bookName}</td>
+										<td>${b.bookAuthor}</td>
+										<td>${b.bookPublisher}</td>
+										<td>${b.genroName}</td>
+										<td>${b.stateName}</td>
+										<td>${b.rentalstateName}</td>
+										<td>${b.bookFirstday}</td>
+										<td>${b.bookTotalDay}</td>
+										<td>${b.bookTotalCount}</td>										
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 
-							<!-- <input type="submit" value="반납" />
-							<input type="reset"	value="초기화" /> -->
-							<div>
-								<input type="submit" class="btn btn-primary btn-large" value="반납" />
-								<input type="reset" class="btn btn-primary btn-large" value="리셋" />
-							</div>
-						</form>
+						<div>
+							<c:if test="${currentPage>1}">
+								<a
+									href="<c:url value='/bookList?currentPage=${currentPage-1}'/>">이전</a>
+							</c:if>
+							<c:if test="${currentPage < lastPage}">
+								<a
+									href="<c:url value='/bookList?currentPage=${currentPage+1}'/>">다음</a>
+							</c:if>
 
+						</div>
 					</div>
 					<!--/span-->
 
@@ -140,7 +160,6 @@ body {
 
 	</div>
 	<!--/.fluid-container-->
-
 
 </body>
 </html>

@@ -22,12 +22,38 @@ public class LibraryController {
 	@Autowired
 	private LibraryService libraryService;
 
-	// 도서관 등록
+	// 로그인GET
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginSign() {
+		return "/view/loginform";
+	}
+	//로그인 POST
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginSign(Library library, HttpSession session) {
+		Library r = libraryService.LibraryLogin(library);
+
+		if (r != null) {
+			session.setAttribute("loginCheck", r);
+			logger.info("test : " + r.toString());
+			return "redirect:/mainhome";
+		} else {
+			return "redirect:/login";
+		}
+	}
+
+	// 로그아웃 세션 정보를 초기화 한다.
+	@RequestMapping(value = "/logout")
+	public String libraryLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
+
+	// 도서관 등록 GET
 	@RequestMapping(value = "/libraryAdd", method = RequestMethod.GET)
 	public String libraryAdd() {
 		return "/view/libraryJoin";
 	}
-
+	// 도서관 등록 POST
 	@RequestMapping(value = "/libraryAdd", method = RequestMethod.POST)
 	public String libraryAdd(Library library) {
 		// LibraryService에 있는 메소드를 실행한다.
@@ -39,36 +65,12 @@ public class LibraryController {
 
 	}
 
-	// 로그인
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginSign() {
-		return "/view/loginform";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginSign(Library library, HttpSession session ) {
-		Library r = libraryService.LibraryLogin(library);
-		if(r != null){
-			session.setAttribute("LibraryLogin",r.getLibraryId());
-			logger.debug("login : ");
-			return "redirect:/mainhome";
-		}else{
-			return "redirect:/login";
-		}
-	}
-	//로그아웃
-	@RequestMapping(value ="/logout")
-	public String libraryLogout(HttpSession session){
-		session.invalidate();
-		return "redirect:/login";
-	}
-
-	// 회원 등록
+	// 회원 등록 GET
 	@RequestMapping(value = "/memberadd", method = RequestMethod.GET)
 	public String memberAdd() {
 		return "/view/memberJoin";
 	}
-
+	// 회원 등록 POST
 	@RequestMapping(value = "/memberadd", method = RequestMethod.POST)
 	public String memberAdd(Member member) {
 		logger.info(member.toString());

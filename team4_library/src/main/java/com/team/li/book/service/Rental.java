@@ -5,8 +5,8 @@ public class Rental {
 	private int bookCode;
 	private String rDStrat;//대여 시작일
 	private String rDEnd;//대여 종료일
-	private int memberId;//회원아이디
-	private int rentalPay;
+	private int memberNo;//회원아이디
+	private int rentalPay;//받을 금액
 	private int rentalstateNo;//대여상태 여부
 	private String bookName;
 	private String mName;
@@ -56,11 +56,11 @@ public class Rental {
 	public void setrDEnd(String rDEnd) {
 		this.rDEnd = rDEnd;
 	}
-	public int getMemberId() {
-		return memberId;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void getMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 	public int getRentalPay() {
 		return rentalPay;
@@ -77,7 +77,7 @@ public class Rental {
 	@Override
 	public String toString() {
 		return "Rental [rentalCode=" + rentalCode + ", bookCode=" + bookCode + ", rDStrat=" + rDStrat + ", rDEnd="
-				+ rDEnd + ", memberId=" + memberId + ", rentalPay=" + rentalPay + ", rentalstateNo=" + rentalstateNo
+				+ rDEnd + ", memberId=" + memberNo + ", rentalPay=" + rentalPay + ", rentalstateNo=" + rentalstateNo
 				+ "]";
 	}
 	

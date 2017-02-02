@@ -60,10 +60,10 @@ body {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="../view/mainHome.html">team4 도서관</a>
+				<a class="brand" href="<c:url value='/mainhome'/>">team4 도서관</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						<!-- 로그인과 로그아웃을 if문으로 설정하기 -->
+						<a href="#" class="navbar-link">${loginCheck.libraryId}</a>관리자님
 						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">
@@ -84,7 +84,7 @@ body {
 					<ul class="nav nav-list">
 						<li class="nav-header">대여관리</li>
 						<li class="active"><a href="<c:url value='/rentbook'/>">도서대여</a></li>
-						<li><a href="<c:url value='/returnbook'/>">도서반납</a></li>
+						<li><a href="<c:url value='/bookReturnCheck'/>">도서반납</a></li>
 					</ul>
 				</div>
 				<!--/.well -->

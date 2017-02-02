@@ -3,6 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="book">
+<!-- 도서등록 -->
 	<insert id="bookInsert" parameterType="com.team.li.book.service.Books">
 		insert into book(
 			library_id,
@@ -13,7 +14,7 @@
 			book_author,
 			book_publisher
 		) values(
-			'id001',
+			#{libraryId},
 			#{stateNo},
 			'1',
 			#{genreNo},
@@ -22,6 +23,7 @@
 			#{bookPublisher}
 		)
 	</insert>
+	<!-- 도서 폐기등록 -->
 	<insert id="bookDis" parameterType="com.team.li.book.service.Disposal">
 	INSERT INTO disposal(
 		book_code,
@@ -40,37 +42,83 @@
 	FROM book
 	where book_code=#{bookCode}
 	</insert>
+	<!-- 대여등록 -->
 	<insert id="rentbook" parameterType="com.team.li.book.service.Rental">
 	insert into rental(
-		book_code,
-		member_id,
-		rentalstate_no,
-		rental_start,
-		rental_end,
-		rental_payment
+		book_code,<!-- 책일련번호 -->
+		member_no,<!-- 회원번호 -->
+		rentalstate_no,<!-- 대여상태 -->
+		rental_start,<!-- 대여일 -->
+		rental_end,<!-- 반납일 -->
+		rental_payment<!-- 금액 -->
 	) values (
 		#{bookCode},
 		#{memberId},
-		'1',
+		'2',
 		now(),
-		#{rDEnd},
+		date_add(now(), interval +5 day),
 		#{rentalPay}
 	) 
 	</insert>
-	<select id="bookReturn" parameterType="int" resultType="com.team.li.book.service.Rental">
-	select
-		rental.rental_code as rentalCode,
-		book.book_name as bookName, 
-		member.member_name as mName,
-		rental.rental_start as rDStrat,
-		rental.rental_end as rDEnd,
-		rental.rental_payment as rentalPay
-	from rental
-	JOIN book on
-		rental.book_code = book.book_code
-	INNER JOIN member on
-		rental.member_id = member.member_id
-	WHERE book.book_code=#{bookCode}
-	
+	<!-- 반납할 도서코드 조회 -->
+	<select id="bookReturnCheck" parameterType="int" resultType="com.team.li.book.service.Rental">
+		select
+			rental.rental_code as rentalCode,
+			book.book_code as bookCode,
+			book.book_name as bookName, 
+			member.member_name as mName,
+			rentalstate.rentalstate_name,
+			rental.rental_start as rDStrat,
+			rental.rental_end as rDEnd,
+			rental.rental_payment as rentalPay
+		from rental
+		JOIN book on
+			rental.book_code = book.book_code
+		JOIN rentalstate on
+			rental.rentalstate_no = rentalstate.rentalstate_no
+		INNER JOIN member on
+			rental.member_id = member.member_id
+		WHERE book.book_code=#{bookCode} and rental.rentalstate_no='2'
 	</select>
+	<!-- 대여중인 상태에서 보관(반납완료) 상태로 업데이트 -->
+	<update id="returnBook" parameterType="com.team.li.book.service.Rental">
+		UPDATE
+			rental
+		SET
+			rental_end=now(),
+			rentalstate_no='1'
+		WHERE
+			book_code=#{bookCode}
+	</update>
+	<!-- 도서전체 갯수 -->
+	<select id="bookCount" resultType="int"><!-- 도서 전체 갯수 -->
+		SELECT 
+			COUNT(*)
+		FROM book
+	</select>
+	<!-- 도서목록 -->
+	<select id="bookList" parameterType="Map" resultType="com.team.li.book.service.Books"><!-- 도서목록 -->
+		SELECT 
+			book_code as bookCode,
+			book_name as bookName,
+			book_author as bookAuthor,
+			book_publisher as bookPublisher,
+			rentalstate.rentalstate_name as rentalstateName,
+			state.state_name as stateName,
+			genre.genre_name as genroName,
+			book_firstday as bookFirstday,
+			book_totalday as bookTotalDay,
+			book_totalcount as bookTotalCount
+		FROM book
+		JOIN rentalstate on
+			book.rentalstate_no = rentalstate.rentalstate_no
+		JOIN state on
+			book.state_no = state.state_no
+		JOIN genre on
+			book.genre_no = genre.genre_no
+		ORDER BY book_code DESC 
+		LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
+	
 </mapper>

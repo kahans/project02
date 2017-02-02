@@ -63,12 +63,12 @@ body {
 				<a class="brand" href="<c:url value='/mainhome'/>">team4 도서관</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						<!-- 로그인과 로그아웃을 if문으로 설정하기 -->
-						
+						<a href="#" class="navbar-link">${loginCheck.libraryId}</a>관리자님
+						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">
 						<li class="active"><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
-						<li><a href="<c:url value='/memberAdd'/>">회원관리</a></li>
+						<li><a href="<c:url value='/memberadd'/>">회원관리</a></li>
 						<li><a href="<c:url value='/rentbook'/>">대여관리</a></li>
 					</ul>
 				</div>
@@ -84,6 +84,7 @@ body {
 					<ul class="nav nav-list">
 						<li class="nav-header">도서관리</li>
 						<li><a href="<c:url value='/bookAdd'/>">도서등록</a></li>
+						<li><a href="<c:url value='/bookList'/>">도서목록</a>
 						<li class="active"><a href="<c:url value='/bookDis'/>">도서폐기등록</a></li>
 					</ul>
 				</div>

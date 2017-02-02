@@ -1,5 +1,8 @@
 package com.team.li.book.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,9 +39,25 @@ public class BookDaoImpl implements BookDao{
 		return sql.insert(BOOKs_NS+"rentbook", rental);
 	}
 	@Override
-	public Rental bookReturn(Rental rental) {
+	public Rental returnSeachBook(Rental rental) {
 		// TODO Auto-generated method stub
-		return sql.selectOne(BOOKs_NS+"bookReturn", rental);
+		return sql.selectOne(BOOKs_NS+"bookReturnCheck", rental);
 	}
+	@Override
+	public int bookReturn(Rental rental) {
+		// TODO Auto-generated method stub
+		return sql.update(BOOKs_NS+"bookReturn", rental);
+	}
+	@Override
+	public List<Books> bookBoardList(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return sql.selectList(BOOKs_NS+"bookList", map);
+	}
+	@Override
+	public int selectTotalBoardCount() {
+		// TODO Auto-generated method stub
+		return sql.selectOne(BOOKs_NS+"bookCount");
+	}
+
 
 }

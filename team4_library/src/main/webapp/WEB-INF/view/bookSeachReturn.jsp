@@ -85,7 +85,7 @@ body {
 						<li class="nav-header">대여관리</li>
 						<!-- 마우스오버를 사용하여 액션 넣기 -->
 						<li><a href="<c:url value='/rentbook'/>">도서대여</a></li>
-						<li class="active"><a href="<c:url value='/bookReturnCheck'/>">도서반납</a></li>
+						<li class="active"><a href="<c:url value='/returnbook'/>">도서반납</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -97,31 +97,16 @@ body {
 				</div>
 				<div class="row-fluid">
 					<div class="span4">
-						<form action="#" method="post">
-							<div>
-								도서코드 : <input type="text" name="bookCode" value="${book.bookCode}"/>
-							</div>
-							<div>
-								도서명: <input type="text" name="bookName" value="${book.bookName}" />
-							</div>
-							<div>
-								회원이름: <input type="text" name="memberName" value="${book.mName}"/>
-							</div>
-							<div>
-								총요금: <input type="text" name="totalPrice" value="${book.rentalPay}" />
-							</div>
-							<div>
-								받은금액: <input type="text" name="paid" value="${book.rentalPay}"/>
-							</div>
-
-							<!-- <input type="submit" value="반납" />
-							<input type="reset"	value="초기화" /> -->
-							<div>
-								<input type="submit" class="btn btn-primary btn-large" value="반납" />
-								<input type="reset" class="btn btn-primary btn-large" value="리셋" />
-							</div>
-						</form>
-
+						<!-- 대여코드 조회 -->
+						<form action="<c:url value='/bookReturnCheck'/>" method="post">
+							<table>
+								<tr>
+									<td colspan="2">도서코드</td>
+									<td colspan="1"><input type="text" name="bookCode"/></td>
+									<td colspan="1"><button id="btn" type="submit">조회</button></td>
+								</tr>
+							</table>
+						</form>	
 					</div>
 					<!--/span-->
 

@@ -19,18 +19,19 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 특정 폴더에서 jsp확장자만 빼서 불러온다. -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
 	<context:component-scan base-package="com.team.li" />
-	
+	<!-- DB에서 연결을 한다. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/dev22db?useUnicode=true&amp;characterEncoding=UTF8"/>
-        <property name="username" value="lmc89id"/>
-        <property name="password" value="lmc89pw"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/library?useUnicode=true&amp;characterEncoding=UTF8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="java0000"/>
     </bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- mybatis 세션생성시 사용할 dataSource주입 -->
@@ -46,6 +47,21 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
-	
+    
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" /><!-- @RequestMapping(value = "/login") 
+				주소들을 가로채간다. -->
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/libraryAdd"/><!-- 특정 주소만 통과(무시)한다. -->
+			<!-- 여러개 컨트롤러 추가 가능 -->
+			<!-- <mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
+				<mvc:mapping path="/admin_delete"/> -->
+			<!-- 로그인체크 인터셉터 클래스 -->
+			<bean class="com.team.li.library.controller.LoginCheck" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
 	
 </beans>

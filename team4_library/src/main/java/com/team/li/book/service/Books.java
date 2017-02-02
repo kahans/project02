@@ -12,6 +12,30 @@ public class Books {
 	private String bookFirstday;
 	private int bookTotalDay;
 	private int bookTotalCount;
+	private String stateName;
+	private String rentalstateName;
+	private String genroName;
+	
+	
+	
+	public String getStateName() {
+		return stateName;
+	}
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
+	public String getRentalstateName() {
+		return rentalstateName;
+	}
+	public void setRentalstateName(String rentalstateName) {
+		this.rentalstateName = rentalstateName;
+	}
+	public String getGenroName() {
+		return genroName;
+	}
+	public void setGenroName(String genroName) {
+		this.genroName = genroName;
+	}
 	public int getBookCode() {
 		return bookCode;
 	}
@@ -83,7 +107,8 @@ public class Books {
 		return "Books [bookCode=" + bookCode + ", libraryId=" + libraryId + ", stateNo=" + stateNo + ", rentalstateNo="
 				+ rentalstateNo + ", genreNo=" + genreNo + ", bookName=" + bookName + ", bookAuthor=" + bookAuthor
 				+ ", bookPublisher=" + bookPublisher + ", bookFirstday=" + bookFirstday + ", bookTotalDay="
-				+ bookTotalDay + ", bookTotalCount=" + bookTotalCount + "]";
+				+ bookTotalDay + ", bookTotalCount=" + bookTotalCount + ", stateName=" + stateName
+				+ ", rentalstateName=" + rentalstateName + ", genroName=" + genroName + "]";
 	}
 	
 	
