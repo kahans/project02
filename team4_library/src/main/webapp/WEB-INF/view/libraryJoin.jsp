@@ -152,7 +152,18 @@ body {
 	<!-- 자바스크립트
     ================================================== -->
 	<!-- 페이지를 빨리 읽어들이도록 문서 마지막에 배치 -->
-	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap-alert.js"></script>
+	<script src="../js/bootstrap-modal.js"></script>
+	<script src="../js/bootstrap-dropdown.js"></script>
+	<script src="../js/bootstrap-scrollspy.js"></script>
+	<script src="../js/bootstrap-tab.js"></script>
+	<script src="../js/bootstrap-tooltip.js"></script>
+	<script src="../js/bootstrap-popover.js"></script>
+	<script src="../js/bootstrap-button.js"></script>
+	<script src="../js/bootstrap-collapse.js"></script>
+	<script src="../js/bootstrap-carousel.js"></script>
+	<script src="../js/bootstrap-typeahead.js"></script>
 
 </body>
 </html>

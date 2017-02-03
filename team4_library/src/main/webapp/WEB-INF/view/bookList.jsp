@@ -140,11 +140,8 @@ body {
 								<a
 									href="<c:url value='/bookList?currentPage=${currentPage+1}'/>">다음</a>
 							</c:if>
-
 						</div>
 					</div>
-					<!--/span-->
-
 				</div>
 				<!--/row-->
 			</div>
@@ -160,6 +157,17 @@ body {
 
 	</div>
 	<!--/.fluid-container-->
-
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap-alert.js"></script>
+	<script src="../js/bootstrap-modal.js"></script>
+	<script src="../js/bootstrap-dropdown.js"></script>
+	<script src="../js/bootstrap-scrollspy.js"></script>
+	<script src="../js/bootstrap-tab.js"></script>
+	<script src="../js/bootstrap-tooltip.js"></script>
+	<script src="../js/bootstrap-popover.js"></script>
+	<script src="../js/bootstrap-button.js"></script>
+	<script src="../js/bootstrap-collapse.js"></script>
+	<script src="../js/bootstrap-carousel.js"></script>
+	<script src="../js/bootstrap-typeahead.js"></script>
 </body>
 </html>
