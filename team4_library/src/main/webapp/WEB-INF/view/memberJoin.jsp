@@ -11,7 +11,7 @@
 <meta name="author" content="">
 
 <!-- 스타일 -->
-<link href="../css/bootstrap-ko.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap-ko.css'/>" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 60px;
@@ -31,7 +31,7 @@ body {
 	}
 }
 </style>
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap-responsive.css'/>" rel="stylesheet">
 
 <!-- IE6~8에서 HTML5 태그를 지원하기위한 HTML5 shim -->
 <!--[if lt IE 9]>
@@ -60,16 +60,16 @@ body {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="<c:url value='/mainhome'/>">team4 도서관</a>
+				<a class="brand" href="<c:url value='/library/mainhome'/>">team4 도서관</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						<a href="#" class="navbar-link">${loginCheck.libraryId}</a>관리자님
-						<a href="<c:url value='/logout'/>" class="navbar-link">로그아웃</a>
+						<a href="<c:url value='/library/logout'/>" class="navbar-link">로그아웃</a>
 					</p>
 					<ul class="nav">
-						<li><a href="<c:url value='/bookAdd'/>">도서관리</a></li>
-						<li class="active"><a href="<c:url value='/memberadd'/>">회원관리</a></li>
-						<li><a href="<c:url value='/rentbook'/>">대여관리</a></li>
+						<li><a href="<c:url value='/library/bookAdd'/>">도서관리</a></li>
+						<li class="active"><a href="<c:url value='/library/memberadd'/>">회원관리</a></li>
+						<li><a href="<c:url value='/library/rentbook'/>">대여관리</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -83,7 +83,7 @@ body {
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">회원관리</li>
-						<li class="active"><a href="<c:url value='/member'/>">회원등록</a></li>
+						<li class="active"><a href="<c:url value='/library/member'/>">회원등록</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -96,7 +96,7 @@ body {
 				<div class="row-fluid">
 					<div class="span4">
 						<!-- 회원가입 폼 -->
-						<form action="<c:url value='/memberAdd'/>" method="POST">
+						<form action="<c:url value='/library/memberAdd'/>" method="POST">
 							<table>
 								<tr>
 									<th colspan="2">회원정보입력</th>
@@ -149,17 +149,17 @@ body {
 
 	</div>
 	<!--/.fluid-container-->
-	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap-alert.js"></script>
-	<script src="../js/bootstrap-modal.js"></script>
-	<script src="../js/bootstrap-dropdown.js"></script>
-	<script src="../js/bootstrap-scrollspy.js"></script>
-	<script src="../js/bootstrap-tab.js"></script>
-	<script src="../js/bootstrap-tooltip.js"></script>
-	<script src="../js/bootstrap-popover.js"></script>
-	<script src="../js/bootstrap-button.js"></script>
-	<script src="../js/bootstrap-collapse.js"></script>
-	<script src="../js/bootstrap-carousel.js"></script>
-	<script src="../js/bootstrap-typeahead.js"></script>
+	<script src="<c:url value='/resources/js/jquery.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-alert.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-modal.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-dropdown.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-scrollspy.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-tab.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-tooltip.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-popover.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-button.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-collapse.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-carousel.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-typeahead.js'/>"></script>
 </body>
 </html>

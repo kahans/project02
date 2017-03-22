@@ -13,9 +13,6 @@
 	<mvc:annotation-driven />
 	<!-- css,js 기타등등을 매핑하기 위해 써야 한다. -->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
-	<mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
-	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
@@ -30,9 +27,12 @@
 	<!-- DB에서 연결을 한다. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/library?useUnicode=true&amp;characterEncoding=UTF8"/>
+        <!-- <property name="url" value="jdbc:mysql://localhost:3306/library?useUnicode=true&amp;characterEncoding=UTF8"/>
         <property name="username" value="root"/>
-        <property name="password" value="java0000"/>
+        <property name="password" value="java0000"/> -->
+        <property name="url" value="jdbc:mysql://localhost:3306/myeong3695?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="username" value="myeong3695" />
+        <property name="password" value="java5963" />
     </bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- mybatis 세션생성시 사용할 dataSource주입 -->
@@ -51,10 +51,10 @@
     
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*" /><!-- @RequestMapping(value = "/login") 
+			<mvc:mapping path="/library/*" /><!-- @RequestMapping(value = "/login") 
 				주소들을 가로채간다. -->
-			<mvc:exclude-mapping path="/login" />
-			<mvc:exclude-mapping path="/libraryAdd"/><!-- 특정 주소만 통과(무시)한다. -->
+			<mvc:exclude-mapping path="/library/login" />
+			<mvc:exclude-mapping path="/library/libraryAdd"/><!-- 특정 주소만 통과(무시)한다. -->
 			<!-- 여러개 컨트롤러 추가 가능 -->
 			<!-- <mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
 				<mvc:mapping path="/admin_delete"/> -->

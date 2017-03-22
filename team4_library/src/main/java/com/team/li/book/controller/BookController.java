@@ -24,48 +24,48 @@ public class BookController {
 	private BookService bookService;
 	
 	//책등록GET
-	@RequestMapping(value="/bookAdd",method=RequestMethod.GET)
+	@RequestMapping(value="/library/bookAdd",method=RequestMethod.GET)
 	public String bookAdd(){
 		return "/view/bookRegister";
 	}
 	//책등록POST
-	@RequestMapping(value="/bookAdd", method=RequestMethod.POST)
+	@RequestMapping(value="/library/bookAdd", method=RequestMethod.POST)
 	public String bookAdd(Books books){
 		bookService.bookAdd(books);
-		return "redirect:/mainhome";
+		return "redirect:/library/mainhome";
 	}
 	//도서폐기GET 폼을 불러온다.
-	@RequestMapping(value="/bookDis", method=RequestMethod.GET)
+	@RequestMapping(value="/library/bookDis", method=RequestMethod.GET)
 	public String bookDis(){		
 		
 		return "/view/bookDisposal";
 	}
 	//도서폐기POST 
-	@RequestMapping(value="/bookDis", method=RequestMethod.POST)
+	@RequestMapping(value="/library/bookDis", method=RequestMethod.POST)
 	public String bookDis(Disposal disposal){
 		logger.info(disposal.toString());
 		bookService.bookDis(disposal);
-		return "redirect:/mainhome";
+		return "redirect:/library/mainhome";
 	}
 	//도서 대여 GET
-	@RequestMapping(value="/rentbook", method=RequestMethod.GET)
+	@RequestMapping(value="/library/rentbook", method=RequestMethod.GET)
 	public String rentbook(){
 		return "/view/bookRent";
 	}
 	//도서 대여 POST
-	@RequestMapping(value="/rentbook",method=RequestMethod.POST)
+	@RequestMapping(value="/library/rentbook",method=RequestMethod.POST)
 	public String rentbook(Rental rental){
 		logger.info(rental.toString());
 		bookService.bookRental(rental);
-		return "redirect:/mainhome";
+		return "redirect:/library/mainhome";
 	}
 	//도서반납조회 GET
-	@RequestMapping(value="/bookReturnCheck", method=RequestMethod.GET)
+	@RequestMapping(value="/library/bookReturnCheck", method=RequestMethod.GET)
 	public String returnSeachBook(){
 		return "/view/bookSeachReturn";
 	}
 	//도서반납조회 POST
-	@RequestMapping(value="/bookReturnCheck",method=RequestMethod.POST)
+	@RequestMapping(value="/library/bookReturnCheck",method=RequestMethod.POST)
 	public String returnSeachBook(Rental rental, Model model){
 		logger.info(model.toString());
 		
@@ -77,21 +77,21 @@ public class BookController {
 		return "/view/bookReturn";
 	}
 	//도서반납 GET
-	@RequestMapping(value="/bookReturn", method=RequestMethod.GET)
+	@RequestMapping(value="/library/bookReturn", method=RequestMethod.GET)
 	public String returnBook(){
 		return "/view/bookReturn";
 	}
 	//도서반납 POST
-	@RequestMapping(value="/bookReturn",method=RequestMethod.POST)
+	@RequestMapping(value="/library/bookReturn",method=RequestMethod.POST)
 	public String returnBook(Rental rental){
 		logger.info(rental.toString());
 		
 		bookService.bookReturn(rental);			
 		
-		return "redirect:/mainhome";
+		return "redirect:/library/mainhome";
 	}
 	//도서 목록 
-	@RequestMapping(value="/bookList")
+	@RequestMapping(value="/library/bookList")
 	public String boardList(Model model,
 			@RequestParam(value="currentPage", defaultValue="1") int currentPage){
 		Map<String, Object> returnMap

@@ -103,15 +103,15 @@
 			book_name as bookName,
 			book_author as bookAuthor,
 			book_publisher as bookPublisher,
-			rentalstate.rentalstate_name as rentalstateName,
+			rentalstate.rentalstate_name,		
 			state.state_name as stateName,
 			genre.genre_name as genroName,
 			book_firstday as bookFirstday,
 			book_totalday as bookTotalDay,
 			book_totalcount as bookTotalCount
 		FROM book
-		JOIN rentalstate on
-			book.rentalstate_no = rentalstate.rentalstate_no
+		join rentalstate
+			on rentalstate.rentalstate_no = book.rentalstate_no
 		JOIN state on
 			book.state_no = state.state_no
 		JOIN genre on

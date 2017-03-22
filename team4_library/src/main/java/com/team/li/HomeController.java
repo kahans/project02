@@ -17,12 +17,18 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/mainhome", method = RequestMethod.GET)
+	@RequestMapping(value = "/library/mainhome", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		
 		return "/view/mainHome";
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home() {
+		
+		
+		return "/view/loginform";
 	}
 	
 }

@@ -23,59 +23,59 @@ public class LibraryController {
 	private LibraryService libraryService;
 
 	// 로그인GET
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/library/login", method = RequestMethod.GET)
 	public String loginSign() {
 		return "/view/loginform";
 	}
 	//로그인 POST
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/library/login", method = RequestMethod.POST)
 	public String loginSign(Library library, HttpSession session) {
 		Library r = libraryService.LibraryLogin(library);
 
 		if (r != null) {
 			session.setAttribute("loginCheck", r);
 			logger.info("test : " + r.toString());
-			return "redirect:/mainhome";
+			return "redirect:/library/mainhome";
 		} else {
-			return "redirect:/login";
+			return "redirect:/library/login";
 		}
 	}
 
 	// 로그아웃 세션 정보를 초기화 한다.
-	@RequestMapping(value = "/logout")
+	@RequestMapping(value = "/library/logout")
 	public String libraryLogout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/login";
+		return "redirect:/library/login";
 	}
 
 	// 도서관 등록 GET
-	@RequestMapping(value = "/libraryAdd", method = RequestMethod.GET)
+	@RequestMapping(value = "/library/libraryAdd", method = RequestMethod.GET)
 	public String libraryAdd() {
 		return "/view/libraryJoin";
 	}
 	// 도서관 등록 POST
-	@RequestMapping(value = "/libraryAdd", method = RequestMethod.POST)
+	@RequestMapping(value = "/library/libraryAdd", method = RequestMethod.POST)
 	public String libraryAdd(Library library) {
 		// LibraryService에 있는 메소드를 실행한다.
 
 		logger.info(library.toString());
 		libraryService.LibraryAdd(library);
 		logger.debug("add : ");
-		return "redirect:/login";
+		return "redirect:/library/login";
 
 	}
 
 	// 회원 등록 GET
-	@RequestMapping(value = "/memberadd", method = RequestMethod.GET)
+	@RequestMapping(value = "/library/memberadd", method = RequestMethod.GET)
 	public String memberAdd() {
 		return "/view/memberJoin";
 	}
 	// 회원 등록 POST
-	@RequestMapping(value = "/memberadd", method = RequestMethod.POST)
+	@RequestMapping(value = "/library/memberadd", method = RequestMethod.POST)
 	public String memberAdd(Member member) {
 		logger.info(member.toString());
 		libraryService.memberAdd(member);
-		return "redirect:/mainhome";
+		return "redirect:/library/mainhome";
 	}
 
 }

@@ -11,7 +11,7 @@
 <meta name="author" content="">
 
 <!-- 스타일 -->
-<link href="../css/bootstrap-ko.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap-ko.css'/>" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 60px;
@@ -31,7 +31,7 @@ body {
 	}
 }
 </style>
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap-responsive.css'/>" rel="stylesheet">
 
 <!-- IE6~8에서 HTML5 태그를 지원하기위한 HTML5 shim -->
 <!--[if lt IE 9]>
@@ -60,7 +60,7 @@ body {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="<c:url value='/login'/>">team4 도서관</a>
+				<a class="brand" href="<c:url value='/library/login'/>">team4 도서관</a>
 				
 				<!--/.nav-collapse -->
 			</div>
@@ -69,30 +69,6 @@ body {
 
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<!-- <div class="span3"> -->
-				<!-- <div class="well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header">사이드바</li>
-						<li class="active"><a href="#">Link</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li class="nav-header">사이드바</li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li class="nav-header">사이드바</li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-						<li><a href="#">링크</a></li>
-					</ul>
-				</div>
-				/.well -->
-		<!-- 	</div> -->
-			<!--/span-->
 			<div class="span8">
 				<div class="hero-unit">
 					<h1 align="center">도서관관리자등록</h1>
@@ -100,7 +76,7 @@ body {
 				<div class="row-fluid">
 					<div class="span4">
 					<!-- 도서관관리자등록 -->
-						<form action="<c:url value='/libraryAdd'/>" method="post">
+						<form action="<c:url value='/library/libraryAdd'/>" method="post">
 							<table>
 								<tr>
 									<th>도서관관리자 ID</th>
@@ -152,18 +128,18 @@ body {
 	<!-- 자바스크립트
     ================================================== -->
 	<!-- 페이지를 빨리 읽어들이도록 문서 마지막에 배치 -->
-	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap-alert.js"></script>
-	<script src="../js/bootstrap-modal.js"></script>
-	<script src="../js/bootstrap-dropdown.js"></script>
-	<script src="../js/bootstrap-scrollspy.js"></script>
-	<script src="../js/bootstrap-tab.js"></script>
-	<script src="../js/bootstrap-tooltip.js"></script>
-	<script src="../js/bootstrap-popover.js"></script>
-	<script src="../js/bootstrap-button.js"></script>
-	<script src="../js/bootstrap-collapse.js"></script>
-	<script src="../js/bootstrap-carousel.js"></script>
-	<script src="../js/bootstrap-typeahead.js"></script>
+<script src="<c:url value='/resources/js/jquery.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-alert.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-modal.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-dropdown.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-scrollspy.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-tab.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-tooltip.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-popover.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-button.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-collapse.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-carousel.js'/>"></script>
+	<script src="<c:url value='/resources/js/bootstrap-typeahead.js'/>"></script>
 
 </body>
 </html>

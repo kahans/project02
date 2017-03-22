@@ -14,8 +14,8 @@
 
 <!-- 
 <!-- Custom styles for this template -->
-<link href="../css/signin.css" rel="stylesheet">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/signin.css'/>" rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 </head>
 <!-- 자바스크립트로 로그인 -->
@@ -39,7 +39,7 @@ body, html {
 	height: 100%
 }
 .bgimg {
-	background-image: url('../img/book2.jpg');
+	background-image: c:url (value='/resources/img/book2.jpg');
 	min-height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -51,19 +51,14 @@ body, html {
 		<div class="w3-display-topleft w3-padding-large w3-xlarge">
 			<h1>Team4</h1>
 		</div>
-		<form id="f1" class="form-signin " action="/login" method="post">
+		<form id="f1" class="form-signin " action="<c:url value='/library/login'/>" method="post">
 			<!-- <h2 class="form-signin-heading">로그인</h2> -->
 			<label for="libraryId" class="sr-only">아이디</label>
-			<input type="text" id="libraryId" name="libraryId"class="form-control"  placeholder="ID" required autofocus>
+			<input type="text" id="libraryId" name="libraryId"class="form-control"  placeholder="ID" value="id001" required autofocus>
 			<label for="libraryPw" class="sr-only">비밀번호</label>
-			<input type="password" id="libraryPw" name="libraryPw" class="form-control" placeholder="Password" required>
-			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
-					ID 저장하기
-				</label>
-			</div>
+			<input type="password" id="libraryPw" name="libraryPw" class="form-control" placeholder="Password" value="pw001" required>
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="로그인"/>
-			<a href="/libraryAdd" class="btn btn-lg btn-primary btn-block" type="button">도서관관리자 등록</a>
+			<a href="<c:url value='/libraryAdd'/>" class="btn btn-lg btn-primary btn-block" type="button">도서관관리자 등록</a>
 <!-- 		<button class="btn btn-lg btn-primary btn-block" type="button">도서관관리자 등록</button>-->
 		</form>
 
