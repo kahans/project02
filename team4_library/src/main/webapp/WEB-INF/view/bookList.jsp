@@ -21,7 +21,9 @@ body {
 .sidebar-nav {
 	padding: 9px 0;
 }
-
+th{
+	font-size: 15px;
+}
 @media ( max-width : 980px) {
 	/* Enable use of floated navbar text */
 	.navbar-text.pull-right {

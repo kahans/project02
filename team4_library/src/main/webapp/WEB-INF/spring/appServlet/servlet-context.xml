@@ -27,12 +27,12 @@
 	<!-- DB에서 연결을 한다. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <!-- <property name="url" value="jdbc:mysql://localhost:3306/library?useUnicode=true&amp;characterEncoding=UTF8"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/library?useUnicode=true&amp;characterEncoding=UTF8"/>
         <property name="username" value="root"/>
-        <property name="password" value="java0000"/> -->
-        <property name="url" value="jdbc:mysql://localhost:3306/myeong3695?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="password" value="java0000"/>
+        <!-- <property name="url" value="jdbc:mysql://localhost:3306/myeong3695?useUnicode=true&amp;characterEncoding=utf-8" />
         <property name="username" value="myeong3695" />
-        <property name="password" value="java5963" />
+        <property name="password" value="java5963" /> -->
     </bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- mybatis 세션생성시 사용할 dataSource주입 -->
